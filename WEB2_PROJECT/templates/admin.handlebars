@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #486275;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #29bedc;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0;
+            color: #fff;
+            background-color: #486275;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #4575a0;
+        }
+    </style>
+</head>
+<body>
+    {{#if msg}}
+        <div class="alert alert-info">
+            {{msg}}
+        </div>
+    {{/if}}
+    <h1>Stations</h1>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Fuel Price (Premium)</th>
+            <th>Fuel Price (Super)</th>
+            <th>Actions</th>
+        </tr>
+        {{#each stations}}
+        <tr>
+            <td>{{name}}</td>
+            <td><a href="/admin/{{../users.username}}/set-location/{{stationId}}">{{location}}</a></td>
+            <td><a href="/admin/{{../users.username}}/update-fuel-price/{{stationId}}">{{fuelPricePremium}}</a></td>
+            <td><a href="/admin/{{../users.username}}/update-fuel-price/{{stationId}}">{{fuelPriceSuper}}</a></td>
+            <td><a href="/admin/{{../users.username}}/delete-station/{{stationId}}">Delete</a> | <a href="/admin/{{../users.username}}/rename-station/{{stationId}}">Rename</a></td>
+        </tr>
+        {{/each}}
+    </table>
+
+    <br><br>
+    <h1>Users</h1>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Account Type</th>
+            <th>Assigned Station</th>
+            <th>Actions</th>
+        </tr>
+        {{#each user}}
+        <tr>
+            <td>{{username}}</td>
+            <td>{{accountType}}</td>
+            <td>{{stationId}}</td>
+            <td><a href="/admin/{{../users.username}}/update-station/{{userId}}">Update Station</a> | <a href="/admin/{{../users.username}}/delete-user/{{userId}}">Delete User</a></td>
+        </tr>
+        {{/each}}
+    </table>
+</body>
+</html>
+
+
+
+
+

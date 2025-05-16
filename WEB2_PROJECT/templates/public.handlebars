@@ -1,0 +1,93 @@
+<head>
+    <style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    th {
+        background-color: #486275;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #ddd;
+    }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <main>
+        <h1>Stations</h1>
+        <table>
+        <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Fuel Price (Premium)</th>
+            <th>Fuel Price (Super)</th>
+            <th>Capacity (Premium)</th>
+            <th>Capacity (Super)</th>
+        </tr>
+        {{#each stations}}
+                <tr>
+                    <td>{{incrementIndex @index}}</td>
+                    <td>{{name}}</td>
+                    <td>{{location}}</td>
+                    <td>{{fuelPricePremium}}</td>
+                    <td>{{fuelPriceSuper}}</td>
+                    <td>{{formatLevel currentFuelLevels.premium}}</td>
+                    <td>{{formatLevel currentFuelLevels.super}}</td>
+                </tr>
+
+                {{#if lowPremiumFuelMessage}}
+                    <p>{{lowPremiumFuelMessage}}</p>
+                {{/if}}
+
+                {{#if lowSuperFuelMessage}}
+                    <p>{{lowSuperFuelMessage}}</p>
+                {{/if}}
+
+        {{/each}}
+        </table>
+        <br>
+        <div style="display: flex; align-items: center; justify-content: center; width: 100%; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; margin-right: 20px;">
+                <div style="width: 40px; height: 20px; background-color: red; margin-right: 10px;"></div>
+                <span>Low Fuel Level</span>
+            </div>
+            
+            <div style="display: flex; align-items: center;">
+                <div style="width: 40px; height: 20px; background-color: green; margin-right: 10px;"></div>
+                <span>Sufficient Fuel Level</span>
+            </div>
+        </div>
+        <canvas id="fuelLevelChart"></canvas>
+    </main>
+
+    <script>
+        var ctx = document.getElementById('fuelLevelChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {{{chartData}}},
+            options: {
+                responsive: true,
+                scales: {
+                    x: { beginAtZero: true },
+                    y: { beginAtZero: true }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>

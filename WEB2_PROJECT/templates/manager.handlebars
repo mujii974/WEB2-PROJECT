@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <style>
+   body {
+     font-family: Arial, sans-serif;
+   }
+   main {
+     width: 80%;
+     margin: 0 auto;
+     padding: 20px;
+     background-color: #f9f9f9;
+     border-radius: 5px;
+     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+   }
+   h1 {
+     color: #333;
+   }
+   p {
+     color: #666;
+     margin-bottom: 10px;
+   }
+   canvas {
+     margin-top: 20px;
+   }
+ </style>
+</head>
+
+<body>
+  {{#if msg}}
+    <div class="alert alert-info">
+      {{msg}}
+    </div>
+  {{/if}}
+  <main>
+    <h1>Station Details</h1>
+    <p>Station ID: {{station.stationId}}</p>
+    <p>Station Name: {{station.name}}</p>
+    <p>Station Location: {{station.location}}</p>
+    <p>Station Fuel Price (Premium): {{station.fuelPricePremium}}</p>
+    <p>Station Fuel Price (Super): {{station.fuelPriceSuper}}</p>
+    <p>Station Current Fuel Levels (Premium): {{formatLevel station.currentFuelLevels.premium}}</p>
+    <p>Station Current Fuel Levels (Super): {{formatLevel station.currentFuelLevels.super}}</p>
+    
+    <canvas id="myChart" width="300" height="150"></canvas>
+  </main>
+
+  <script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: JSON.parse('{{{chartData}}}'),
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Daily Fuel Sales Chart',
+          },
+        },
+        scales: {
+          x: {
+            stacked: true,
+          },
+          y: {
+            stacked: true,
+          },
+        },
+        elements: {
+          line: {
+            tension: 0.4 // This will create a zigzag pattern
+          }
+        }
+      },
+    });
+  </script>
+
+</body>
+
+</html>
+
+
+

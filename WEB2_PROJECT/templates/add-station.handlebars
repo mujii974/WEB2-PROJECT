@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Station</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3d6383;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #4c84a4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Station</h1>
+    <form action="/admin/{{users.username}}/add-station" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location">
+
+        <label for="fuelPricePremium">Fuel Price (Premium):</label>
+        <input type="number" id="fuelPricePremium" name="fuelPricePremium" step="0.01">
+
+        <label for="fuelPriceSuper">Fuel Price (Super):</label>
+        <input type="number" id="fuelPriceSuper" name="fuelPriceSuper" step="0.01">
+
+        <label for="currentFuelLevelsPremium">Current Fuel Levels (Premium):</label>
+        <input type="number" id="currentFuelLevelsPremium" name="currentFuelLevelsPremium" step="0.01">
+        
+        <label for="currentFuelLevelsSuper">Current Fuel Levels (Super):</label>
+        <input type="number" id="currentFuelLevelsSuper" name="currentFuelLevelsSuper" step="0.01">
+
+        <input type="hidden" id="csrfToken" name="csrfToken" value="{{csrfToken}}" />
+        <input type="submit" value="Add Station">
+    </form>
+</body>
+</html>

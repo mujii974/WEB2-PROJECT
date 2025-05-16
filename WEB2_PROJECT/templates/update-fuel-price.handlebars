@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Fuel Price</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3d6383;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #4c84a4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Update Fuel Price</h1>
+    <form action="/admin/{{users.username}}/update-fuel-price/{{stationId}}" method="POST">
+        <label for="fuelType">Fuel Type:</label>
+        <select id="fuelType" name="fuelType">
+            <option value="premium">Premium</option>
+            <option value="super">Super</option>
+        </select>
+
+        <label for="fuelPrice">Fuel Price:</label>
+        <input type="number" id="fuelPrice" name="fuelPrice" step="0.01" required>
+
+        <input type="hidden" id="csrfToken" name="csrfToken" value="{{csrfToken}}" />
+        <input type="submit" value="Update Fuel Price">
+    </form>
+</body>
+</html>

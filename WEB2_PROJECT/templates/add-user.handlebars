@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+        input[type="text"], input[type="password"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3d6383;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #4c84a4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add User</h1>
+    <form action="/admin/{{users.username}}/add-user" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" value="@psmanagement.com">
+
+        <label for="accountType">Account Type:</label>
+        <select id="accountType" name="accountType">
+            <option value="admin">Admin</option>
+            <option value="manager">Manager</option>
+        </select>
+        
+        <input type="hidden" id="csrfToken" name="csrfToken" value="{{csrfToken}}" />
+        <input type="submit" value="Add User">
+    </form>
+</body>
+</html>

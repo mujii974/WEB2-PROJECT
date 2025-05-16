@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: auto;
+            padding: auto;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .location h1 {
+            text-align: center;
+            grid-column: 1 / -1;
+        }
+        .location {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+            background-color: #fff;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 98%;
+        }
+        .details {
+            grid-column: 1/2;
+        }
+        .maps {
+            grid-column: 2/3;
+        }
+        .details h1, .details h3, .details h6 {
+            color: #333;
+        }
+        .details div {
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #3c4b64;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            width: 100%;
+            border-radius: 10px;
+        }
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>  
+   <section class="location">
+    <h1>CORPORATE HEADQUARTERS</h1>
+   		<section class="details">
+   			<div>
+   				<h3>Headquarters</h3>
+   				<h6>QPS : QATAR PETROL STATIONS</h6>
+   				<p>
+   					69696 Marina Twin Towers B<br>
+   					Lusail 303, Qatar
+   				</p>
+   			</div>
+
+   			<div>
+   				<h3>Contact</h3>
+   				<p>Domestic 4444 6969<br>
+   					International +974 - 4444 4007
+   				</p>
+   			</div>
+
+   			<div>
+   				<h3>Hours of Operation</h3>
+   				<p>Sunday-Thursday 7:00AM-3:00PM GMT+3</p>
+   			</div>
+
+   			<div>
+   				<h3>Customer Service</h3>
+   				<p>
+   					Domestic 4444 1010<br>
+   					International +974 - 4440 0769<br>
+   					Email customerservice@psmanagement.com
+   				</p>
+   			</div>
+   		</section>
+        <div class="maps">
+            <h3>Location</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40784.44841625895!2d51.48350626722983!3d25.37567287524067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45c34d1e74d62b%3A0x3936e796a7d7dc86!2sMarina%20Twin%20Towers%20B!5e0!3m2!1sen!2sqa!4v1677969518713!5m2!1sen!2sqa" width="500" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+   </section>
+
+   <footer>
+      <h1 id="rights"> &copy; ALL RIGHTS RESERVED</h1>
+      <section class="col1">
+         <p>The content of this website (graphics, text and any and all other elements) is &copy;Copyright 2023 by QPS, Inc., and may not be reprinted or retransmitted in whole or part without the expressed written consent of QPS, Inc.</p>
+      </section>
+   </footer>
+</body>
+</html>

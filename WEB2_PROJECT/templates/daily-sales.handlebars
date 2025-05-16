@@ -1,0 +1,20 @@
+<form id="daily-sales-form" method="POST" class="p-5">
+  <div class="form-group">
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="salesTotal">Sales Total (in QAR):</label>
+    <input type="number" id="salesTotal" name="salesTotal" step="0.01" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="fuelType">Fuel Type:</label>
+    <input type="text" id="fuelType" name="fuelType" class="form-control" />
+  </div>
+
+  <input type="hidden" id="csrfToken" name="csrfToken" value="{{csrfToken}}" />
+
+  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
